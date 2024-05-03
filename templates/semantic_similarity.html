@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Similarity Analysis Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200;1,300&family=Raleway:ital,wght@1,300;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amita&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300&display=swap" rel="stylesheet">
+
+<style>
+body {
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: tan;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+.h1c{
+    color: rgba(21, 19, 17, 0.85);
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.37rem;
+    padding: 10px;
+    font-size: 45px;
+    font-variant: small-caps;
+}
+.p1c{
+    color: rgba(21, 19, 17, 0.85);
+    font-family: 'Tiro Devanagari Hindi', serif;
+    padding: 10px;
+    font-size: 28px;
+    font-variant: small-caps;
+}
+.h2c{
+    color: rgba(21, 19, 17, 0.85);
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.09rem;
+    padding: 10px;
+    font-size: 28px;
+    font-variant: small-caps;
+}
+.h3c{
+    color: rgba(21, 19, 17, 0.85);
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.07rem;
+    padding: 10px;
+    font-size: 26px;
+    font-variant: small-caps;
+}
+        
+.form-feed{
+    margin: 8px;
+    padding: 8px;
+}
+.mid-feed{
+    max-width: 80vw;
+    margin: auto;
+    margin-top: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 23px;
+
+}
+hr {
+    width: 80%;
+    border: none;
+    height: 1px;
+    background-color: rgba(21, 19, 17, 1.09);
+}
+.ques{
+
+font-size: 1.280rem;
+font-family: 'Bricolage Grotesque', sans-serif;
+color: rgba(21, 19, 17, 1.09);
+
+
+}
+.submi{
+    background: rgba(255, 255, 255, 0.161);
+    width: auto;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 2px 1px;
+    padding: 6px 12px;
+    font-size: 1.192rem;
+    font-family: 'Tiro Devanagari Hindi';
+    font-weight: bolder;
+    border-radius: 15px;
+    border: 0.8px solid rgba(21, 19, 17, 0.70);
+    border-radius: 15px;
+    border-style: outset;
+    border-bottom-width: initial;
+    transition: 0.34s;
+    
+    
+}
+.submit-feed{
+    text-align: right;
+    align-items: end;
+    display: flex;
+    max-width: 30vw;
+    margin: auto;
+    margin-top: 12px;
+    
+    justify-content: center;
+}
+.submi:hover{
+    background: rgba(255, 255, 255, 0.522);
+}
+
+.encountered-issues{
+    border: 0.8px solid rgba(21, 19, 17, 0.70);
+
+    font-size: 1.3rem;
+    text-align: center;
+  
+  align-items: center;
+  font-family: 'Libre Baskerville', serif;
+
+    border-radius: 15px;
+    border-style: outset;
+    border-bottom-width: initial;
+    background: rgba(255, 255, 255, 0.162);
+    transition: 0.4s;
+    transition-timing-function: ease-in-out;
+}
+.encountered-issues:hover{
+    background: rgba(255, 255, 255, 0.522);
+}
+.encountered-issues:focus{
+    background: rgba(255, 255, 255, 0.522);
+}
+   </style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="mid-feed">
+        <h1 class="h1c">Semantic Similarity Analysis Results</h1><hr>
+        {% if chapter == '19' %}
+            <h2 class="h2c">Overall Semantic Analysis</h1>
+        {% else %}
+            <h2 class="h2c">Chapter: {{ chapter }}</h1>
+        {% endif %}
+        
+        <h2 class="h2c">Author Pair: {{ author_pair_col_name }}</h2>
+        
+        <!-- Display the graph -->
+        <h3 class="h3c">Graph of Semantic Similarity</h3>
+        {{ graph_html | safe }}
+    
+        <br><hr>
+        <h3 class="h3c">Most Semantically Similar Verse</h3>
+        {% if chapter == '19' %}
+        <p class="p1c">Chapter {{ ch }},Shloka {{ shloka_number }}: {{ most_similar_verse }}</p>
+        {% else %}
+        <p class="p1c">Shloka {{ shloka_number }}: {{ most_similar_verse }}</p>
+        {% endif %}
+        
+        <br><hr>
+        <h3 class="h3c">Mean Cosine Similarity</h3>
+        <p class="p1c">{{ mean_cosine_similarity }}</p>
+    </div>
+
+    
+</body>
+</html>
