@@ -154,6 +154,6 @@ def analyze_sentiment():
     return render_template('sentiment.html', chapter=chapter, graph_html=graph_html)
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get('PORT', get_open_port()))
     app.run(host='0.0.0.0', port=port)
 
