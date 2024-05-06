@@ -28,6 +28,13 @@ with open('Adidevananda_vec.pkl', 'rb') as f:
 
 model = SentenceTransformer('all-mpnet-base-v2')
 
+def get_open_port():
+    temp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    temp_socket.bind(('localhost', 0))  # Bind to port 0
+    addr, port = temp_socket.getsockname()
+    temp_socket.close()
+    return port
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -147,5 +154,7 @@ def analyze_sentiment():
     return render_template('sentiment.html', chapter=chapter, graph_html=graph_html)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    PORT = get_open_port()
+    print(f"Server is running on port {PORT}")
+    app.run(debug=True, port=PORT)
 
